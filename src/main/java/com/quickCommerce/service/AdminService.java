@@ -1,6 +1,5 @@
 package com.quickCommerce.service;
 
-
 import com.quickCommerce.dto.AdminDTO;
 import com.quickCommerce.dto.OtpVerificationDTO;
 import com.quickCommerce.entity.Admin;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Service;
 import java.security.SecureRandom;
 import java.time.Instant;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -47,8 +45,17 @@ public class AdminService {
         Admin admin = repo.findByEmail(request.getEmail())
                 .orElseThrow(() -> new RuntimeException("Email not found."));
 
+<<<<<<< HEAD
         if (!admin.getOtp().equals(request.getOtp())) {
             throw new RuntimeException("Invalid OTP.");
+=======
+    public AdminDTO verifyOtpAndAddPassword(String email, String otp, String password) {
+        Admin admin = repo.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("Email Not Found."));
+
+        if (!otp.equals(admin.getOtp()) || Instant.now().isAfter(admin.getOtpExpiry())) {
+            throw new RuntimeException("OTP expired or invalid.");
+>>>>>>> e9ca14e67c50ec5a7d07b036a077ca3752f6963f
         }
 
         if (admin.getOtpExpiry().isBefore(Instant.now())) {
@@ -71,6 +78,7 @@ public class AdminService {
                 .map(AdminDTO::new)
                 .collect(Collectors.toList());
     }
+
     public AdminDTO updateAdmins(Admin admin) {
         Admin existingAdmin = repo.findById(admin.getId())
                 .orElseThrow(() -> new RuntimeException("Admin not found with ID: " + admin.getId()));
@@ -84,6 +92,7 @@ public class AdminService {
         Admin updatedAdmin = repo.save(existingAdmin);
         return new AdminDTO(updatedAdmin);
     }
+
     public void deleteAdmin(Long id) {
         boolean exists = repo.existsById(id);
         if (!exists) {
@@ -91,10 +100,10 @@ public class AdminService {
         }
         repo.deleteById(id);
     }
+
     public AdminDTO getAdminById(Long id) {
         Admin admin = repo.findById(id)
                 .orElseThrow(() -> new RuntimeException("Admin not found with ID: " + id));
         return new AdminDTO(admin);
     }
 }
-
