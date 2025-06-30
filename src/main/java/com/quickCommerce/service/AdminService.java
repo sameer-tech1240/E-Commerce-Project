@@ -62,5 +62,30 @@ public class AdminService {
                 .map(AdminDTO::new)
                 .collect(Collectors.toList());
     }
+    public AdminDTO updateAdmins(Admin admin) {
+        Admin existingAdmin = repo.findById(admin.getId())
+                .orElseThrow(() -> new RuntimeException("Admin not found with ID: " + admin.getId()));
+
+        // Update only necessary fields (optional, recommended for safety)
+        existingAdmin.setUsername(admin.getUsername());
+        existingAdmin.setEmail(admin.getEmail());
+        existingAdmin.setRole(admin.getRole());
+        // You can add more fields as needed
+
+        Admin updatedAdmin = repo.save(existingAdmin);
+        return new AdminDTO(updatedAdmin);
+    }
+    public void deleteAdmin(Long id) {
+        boolean exists = repo.existsById(id);
+        if (!exists) {
+            throw new RuntimeException("Admin not found with ID: " + id);
+        }
+        repo.deleteById(id);
+    }
+    public AdminDTO getAdminById(Long id) {
+        Admin admin = repo.findById(id)
+                .orElseThrow(() -> new RuntimeException("Admin not found with ID: " + id));
+        return new AdminDTO(admin);
+    }
 }
 
