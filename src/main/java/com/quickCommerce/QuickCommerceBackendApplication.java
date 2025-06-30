@@ -9,5 +9,5 @@ public class QuickCommerceBackendApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(QuickCommerceBackendApplication.class, args);
 	}
-
+ 
 }
