@@ -42,6 +42,18 @@ public class AdminController {
     public ResponseEntity<List<AdminDTO>> getAllAdmins() {
         return ResponseEntity.ok(adminService.getAllAdmins());
     }
-
+    @PutMapping("/update")
+    public ResponseEntity<AdminDTO> updateAdmin(@RequestBody Admin admin) {
+        AdminDTO updatedAdmin = adminService.updateAdmins(admin);
+        return ResponseEntity.ok(updatedAdmin);
+    }
+    @DeleteMapping("/{id}")
+    public String deleteAdmin(@PathVariable Long id) {
+        adminService.deleteAdmin(id);
+        return "Admin with ID " + id + " has been deleted.";
+    }
+    @GetMapping("/{id}")
+    public AdminDTO getAdmin(@PathVariable Long id) {
+        return adminService.getAdminById(id);
+    }
 }
-
