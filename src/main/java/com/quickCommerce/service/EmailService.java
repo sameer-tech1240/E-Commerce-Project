@@ -15,8 +15,8 @@ public class EmailService {
     public void sendOtp(String toEmail, String otp) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(toEmail);
-        message.setSubject("आपका OTP");
-        message.setText("आपका OTP है: " + otp);
+        message.setSubject("Your OTP");
+        message.setText("Your is OTP: " + otp);
 
         mailSender.send(message);
     }

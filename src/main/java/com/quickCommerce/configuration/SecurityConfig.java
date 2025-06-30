@@ -15,7 +15,7 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable()) // CSRF protect disable  (POST/PUT)
                 .authorizeHttpRequests(auth -> auth
-                        .anyRequest().permitAll() // All requests allow करें
+                        .anyRequest().permitAll() // All requests allow
                 );
         return http.build();
     }
