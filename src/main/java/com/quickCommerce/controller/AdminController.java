@@ -52,8 +52,5 @@ public class AdminController {
         adminService.deleteAdmin(id);
         return "Admin with ID " + id + " has been deleted.";
     }
-    @GetMapping("/{id}")
-    public AdminDTO getAdmin(@PathVariable Long id) {
-        return adminService.getAdminById(id);
-    }
+
 }

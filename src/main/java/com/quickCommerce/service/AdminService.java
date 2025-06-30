@@ -23,18 +23,24 @@ public class AdminService {
     private EmailService emailService;
 
     public String sendOtpToEmail(String username, String email) {
+
+        // ✅ Generate 6-digit OTP
         String otp = String.valueOf(100000 + new SecureRandom().nextInt(900000));
 
+        // ✅ Create or update Admin object
         Admin admin = new Admin();
         admin.setUsername(username);
         admin.setEmail(email);
         admin.setOtp(otp);
-        admin.setOtpExpiry(Instant.now().plusSeconds(300)); // 5 mins
+        admin.setOtpExpiry(Instant.now().plusSeconds(300)); // OTP valid for 5 minutes
 
+        // ✅ Save OTP info in DB
         repo.save(admin);
+
+        // ✅ Send OTP via email
         emailService.sendOtp(email, otp);
 
-        return "OTP has been sent." + email;
+        return "OTP has been sent to " + email;
     }
 
     public AdminDTO verifyOtpAndAddPassword(String email, String otp,String password) {
