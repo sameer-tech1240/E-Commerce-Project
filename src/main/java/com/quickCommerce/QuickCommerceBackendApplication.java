@@ -10,5 +10,5 @@ public class QuickCommerceBackendApplication {
 		SpringApplication.run(QuickCommerceBackendApplication.class, args);
 		System.out.println("Hell Java Developer :-> Ahmad");
 	}
-
+ 
 }

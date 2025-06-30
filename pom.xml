@@ -41,7 +41,16 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+<<<<<<< HEAD
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.5.0</version>
+		</dependency>
+
+=======
 >>>>>>> 086e0299b0fc0724ff0c5541584be467e61607c0
+>>>>>>> 94732845b6a5b1169b32044125aa917fa21699a2
 
 		<!-- Spring Boot Data JPA for MySQL -->
 		<dependency>
