@@ -1,6 +1,5 @@
 package com.quickCommerce.service;
 
-
 import com.quickCommerce.dto.AdminDTO;
 import com.quickCommerce.entity.Admin;
 import com.quickCommerce.repo.AdminRepository;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Service;
 import java.security.SecureRandom;
 import java.time.Instant;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -43,7 +41,7 @@ public class AdminService {
         return "OTP has been sent to " + email;
     }
 
-    public AdminDTO verifyOtpAndAddPassword(String email, String otp,String password) {
+    public AdminDTO verifyOtpAndAddPassword(String email, String otp, String password) {
         Admin admin = repo.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("Email Not Found."));
 
@@ -68,6 +66,7 @@ public class AdminService {
                 .map(AdminDTO::new)
                 .collect(Collectors.toList());
     }
+
     public AdminDTO updateAdmins(Admin admin) {
         Admin existingAdmin = repo.findById(admin.getId())
                 .orElseThrow(() -> new RuntimeException("Admin not found with ID: " + admin.getId()));
@@ -81,6 +80,7 @@ public class AdminService {
         Admin updatedAdmin = repo.save(existingAdmin);
         return new AdminDTO(updatedAdmin);
     }
+
     public void deleteAdmin(Long id) {
         boolean exists = repo.existsById(id);
         if (!exists) {
@@ -88,10 +88,10 @@ public class AdminService {
         }
         repo.deleteById(id);
     }
+
     public AdminDTO getAdminById(Long id) {
         Admin admin = repo.findById(id)
                 .orElseThrow(() -> new RuntimeException("Admin not found with ID: " + id));
         return new AdminDTO(admin);
     }
 }
-
