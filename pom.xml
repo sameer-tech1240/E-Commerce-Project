@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -31,8 +31,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
-<<<<<<< HEAD
-=======
+	
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
@@ -41,16 +40,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-<<<<<<< HEAD
+
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>2.5.0</version>
 		</dependency>
 
-=======
->>>>>>> 086e0299b0fc0724ff0c5541584be467e61607c0
->>>>>>> 94732845b6a5b1169b32044125aa917fa21699a2
 
 		<!-- Spring Boot Data JPA for MySQL -->
 		<dependency>
@@ -88,7 +84,8 @@
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-			<version>2.5.0</version> <!-- Ensure this version is compatible with Spring Boot 3.x -->
+			<version>2.5.0</version> <!-- Ensure this version is compatible with
+			Spring Boot 3.x -->
 		</dependency>
 
 		<dependency>
@@ -121,9 +118,6 @@
 			</plugin>
 		</plugins>
 	</build>
-<<<<<<< HEAD
-</project>
-=======
 
 </project>
->>>>>>> 086e0299b0fc0724ff0c5541584be467e61607c0
+
