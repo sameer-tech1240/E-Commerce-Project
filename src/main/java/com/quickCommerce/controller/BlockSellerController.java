@@ -1,7 +1,7 @@
 package com.quickCommerce.controller;
 
-import com.quickCommerce.entity.Seller;
-import com.quickCommerce.service.SellerService;
+import com.quickCommerce.entity.BlockSeller;
+import com.quickCommerce.service.BlockSellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,23 +9,23 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/blocksellers")
-public class SellerController {
+public class BlockSellerController {
 
     @Autowired
-    private SellerService service;
+    private BlockSellerService service;
 
     @GetMapping("/all")
-    public List<Seller> getAll() {
+    public List<BlockSeller> getAll() {
         return service.getAll();
     }
 
     @GetMapping("/getBySellerId/{sellerId}")
-    public Seller getBySellerId(@PathVariable("sellerId") String sellerId) {
+    public BlockSeller getBySellerId(@PathVariable("sellerId") String sellerId) {
         return service.getBySellerId(sellerId);
     }
 
     @PostMapping
-    public Seller save(@RequestBody Seller s) {
+    public BlockSeller save(@RequestBody BlockSeller s) {
         return service.save(s);
     }
 

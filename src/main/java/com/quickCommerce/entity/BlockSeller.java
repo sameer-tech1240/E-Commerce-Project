@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Seller {
+public class BlockSeller {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

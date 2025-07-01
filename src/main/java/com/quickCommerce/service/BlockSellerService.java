@@ -1,35 +1,35 @@
 package com.quickCommerce.service;
 
-import com.quickCommerce.entity.Seller;
-import com.quickCommerce.repo.SellerRepository;
+import com.quickCommerce.entity.BlockSeller;
+import com.quickCommerce.repo.BlockSellerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class SellerService {
+public class BlockSellerService {
 
     @Autowired
-    private SellerRepository repo;
+    private BlockSellerRepository repo;
 
-    public List<Seller> getAll() {
+    public List<BlockSeller> getAll() {
         return repo.findAll();
     }
 
-    public Seller getBySellerId(String sellerId) {
-        Seller seller = repo.findBySellerId(sellerId);
+    public BlockSeller getBySellerId(String sellerId) {
+        BlockSeller seller = repo.findBySellerId(sellerId);
         if (seller == null) {
             throw new RuntimeException("Seller not found with sellerId: " + sellerId);
         }
         return seller;
     }
 
-    public Seller save(Seller s) {
+    public BlockSeller save(BlockSeller s) {
         if (s.getId() == 0) {
             return repo.save(s); // new seller
         } else {
-            Seller existing = repo.findById(s.getId())
+            BlockSeller existing = repo.findById(s.getId())
                     .orElseThrow(() -> new RuntimeException("Seller not found to update"));
             existing.setSellerId(s.getSellerId());
             return repo.save(existing);
@@ -42,7 +42,7 @@ public class SellerService {
 
     //  New: delete by sellerId
     public void deleteBySellerId(String sellerId) {
-        Seller seller = repo.findBySellerId(sellerId);
+        BlockSeller seller = repo.findBySellerId(sellerId);
         if (seller != null) {
             repo.deleteById(seller.getId());
         } else {
